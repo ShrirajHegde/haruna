@@ -123,5 +123,5 @@ cmake-build-debug*
 .cache
 .clang-format
 .vscode
-
-
+.github
+appimage-amd64.yaml
