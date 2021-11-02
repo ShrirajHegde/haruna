@@ -15,7 +15,7 @@ AppDir:
   app_info:
     id: org.kde.haruna
     name: Haruna Video Player
-    icon: org.kde.haruna
+    icon: haruna
     version: !ENV ${HARUNA_VERSION}
     exec: usr/bin/haruna
 
