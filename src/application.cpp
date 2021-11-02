@@ -71,7 +71,6 @@ static QApplication *createApplication(int &argc, char **argv, const QString &ap
     QApplication::setOrganizationDomain("kde.org");
     QApplication::setApplicationDisplayName("Haruna - Video Player");
     QApplication::setApplicationVersion(Application::version());
-    QApplication::setWindowIcon(QIcon::fromTheme("org.kde.haruna"));
 
     QQuickStyle::setStyle(QStringLiteral("org.kde.desktop"));
     QQuickStyle::setFallbackStyle(QStringLiteral("Fusion"));
@@ -80,6 +79,7 @@ static QApplication *createApplication(int &argc, char **argv, const QString &ap
     }
 
     QApplication *app = new QApplication(argc, argv);
+    QApplication::setWindowIcon(QIcon::fromTheme("haruna"));
     KLocalizedString::setApplicationDomain("haruna");
     return app;
 }
@@ -170,7 +170,8 @@ void Application::setupAboutData()
     m_aboutData.setLicense(KAboutLicense::GPL_V3);
     m_aboutData.setCopyrightStatement(i18n("(c) 2019-2021"));
     m_aboutData.setHomepage(QStringLiteral("https://invent.kde.org/multimedia/haruna"));
-    m_aboutData.setBugAddress(QStringLiteral("https://bugs.kde.org").toUtf8());
+    m_aboutData.setBugAddress(QStringLiteral("https://bugs.kde.org/enter_bug.cgi?product=Haruna").toUtf8());
+    m_aboutData.setComponentName(QStringLiteral("generic"));
     m_aboutData.setDesktopFileName("org.kde.haruna");
 
     m_aboutData.addAuthor(i18n("George Florea Bănuș"),
