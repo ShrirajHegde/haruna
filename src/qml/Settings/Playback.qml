@@ -45,7 +45,7 @@ SettingsBasePage {
         CheckBox {
             id: resumePlaybackCheckBox
 
-            text: i18n("Remember time position")
+            text: i18n("Resume playback")
             checked: PlaybackSettings.resumePlayback
             onCheckedChanged: {
                 PlaybackSettings.resumePlayback = checked
@@ -54,6 +54,24 @@ SettingsBasePage {
 
             ToolTip {
                 text: i18n("When opening a file that was played before it will start at the position it was when playback stopped.")
+            }
+        }
+
+        Item { width: 1; height: Kirigami.Units.largeSpacing; Layout.columnSpan: 2 }
+        Item { width: 1; height: 1 }
+
+        CheckBox {
+            id: pauseOnMinimizeCheckBox
+
+            text: i18n("Pause on minimize")
+            checked: PlaybackSettings.pauseWhileMinimized
+            onCheckedChanged: {
+                PlaybackSettings.pauseWhileMinimized = checked
+                PlaybackSettings.save()
+            }
+
+            ToolTip {
+                text: i18n("Pauses the player while the window is minimized, playback resumes when restored.")
             }
         }
 
@@ -150,10 +168,10 @@ SettingsBasePage {
                         return i18n("Disabled")
                     } else if (timePositionSaving.value === 0) {
                         return i18n("For all files")
-                    } else if (timePositionSaving.value === 1) {
-                        return i18n("For files longer than %1 minute", timePositionSaving.value)
                     } else {
-                        return i18n("For files longer than %1 minutes", timePositionSaving.value)
+                        return i18np("For files longer than %1 minute",
+                                     "For files longer than %1 minutes",
+                                     timePositionSaving.value)
                     }
                 }
                 elide: Text.ElideRight
